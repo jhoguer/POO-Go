@@ -1,7 +1,11 @@
 package main
 
+import (
+	"github.com/jhoguer/POO-Go/tree/master/encapsulacion/course"
+)
+
 func main() {
-	Go := &Course{
+	Go := &course.Course{
 		Name:    "Go desde cero",
 		Price:   12.34,
 		IsFree:  false,
