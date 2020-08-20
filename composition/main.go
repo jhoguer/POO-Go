@@ -31,22 +31,22 @@ func main() {
 		"Colombia",
 		"Popayan",
 		customer.New("Jhon Guerrero", "Calle 17 # 26 - 17", "45352355"),
-		[]invoiceItem.Item{
+		invoiceItem.NewItems(
 			invoiceItem.New(1, "Curso de Go", 17.55),
 			invoiceItem.New(2, "Curso de Bases de datos con Go", 20.54),
 			invoiceItem.New(3, "Curso de POO con Go", 12.34),
 			invoiceItem.New(4, "API con Go", 30.05),
-		},
+		),
 	)
 
-	fmt.Printf("%+v", i)
+	fmt.Printf("%+v\n\n", i)
 	i.SetTotal()
-	fmt.Printf("%+v", i)
+	fmt.Printf("%+v\n\n", i)
 
 	fmt.Println("_____________________________________")
 
-	fmt.Printf("%+v", factura)
-	i.SetTotal()
-	fmt.Printf("%+v", factura)
+	fmt.Printf("%+v\n\n", factura)
+	factura.SetTotal()
+	fmt.Printf("%+v\n\n", factura)
 
 }
