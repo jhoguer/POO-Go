@@ -19,4 +19,7 @@ func main() {
 
 	Go.PrintClasses()
 
+	// este metodo al ser NO exportado, no se puede usar fuera del paquete
+	// Go.changePrice(34)
+
 }

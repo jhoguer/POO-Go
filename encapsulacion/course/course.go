@@ -2,6 +2,8 @@ package course
 
 import "fmt"
 
+// Nuestra estructura es exportada
+// los campos de la estructura son exportados
 type Course struct {
 	Name    string
 	Price   float64
@@ -10,6 +12,7 @@ type Course struct {
 	Clases  map[uint]string
 }
 
+// Los metodos tambien son exportados
 func (c *Course) PrintClasses() {
 	text := "Las clases son: "
 	for _, class := range c.Clases {
@@ -19,6 +22,7 @@ func (c *Course) PrintClasses() {
 	fmt.Println(text[:len(text)-2])
 }
 
-func (c *Course) ChangePrice(price float64) {
+// Este metodo es NO exportado
+func (c *Course) changePrice(price float64) {
 	c.Price = price
 }
