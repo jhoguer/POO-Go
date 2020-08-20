@@ -4,7 +4,7 @@ import "fmt"
 
 // Nuestra estructura es exportada
 // los campos de la estructura son exportados
-type Course struct {
+type course struct {
 	Name    string
 	Price   float64
 	IsFree  bool
@@ -12,8 +12,19 @@ type Course struct {
 	Clases  map[uint]string
 }
 
+func New(name string, price float64, isFree bool) *course {
+	if price == 0 {
+		price = 30
+	}
+	return &course{
+		Name:   name,
+		Price:  price,
+		IsFree: isFree,
+	}
+}
+
 // Los metodos tambien son exportados
-func (c *Course) PrintClasses() {
+func (c *course) PrintClasses() {
 	text := "Las clases son: "
 	for _, class := range c.Clases {
 		text += class + ", "
@@ -23,6 +34,6 @@ func (c *Course) PrintClasses() {
 }
 
 // Este metodo es NO exportado
-func (c *Course) changePrice(price float64) {
+func (c *course) changePrice(price float64) {
 	c.Price = price
 }
