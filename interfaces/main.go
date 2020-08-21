@@ -28,6 +28,11 @@ func (p Person) Bye() {
 	fmt.Printf("Adios soy %s\n", p.Name)
 }
 
+// Implementando una interface propia de Go
+func (p Person) String() string {
+	return "Hola soy una persona y mi nombre es: " + p.Name
+}
+
 type Text string
 
 func (t Text) Greet() {
@@ -91,5 +96,12 @@ func main() {
 	// ByeAll(p, t)
 
 	All(p, t)
+
+	// Como se implemento la interface en un metodo de la structura Person
+	// Se modifica el comportamiento del metodo fmt.Println
+	fmt.Println(p)
+
+	// Funciona normalmente porque no se ha implementado la interface en tipo Text
+	fmt.Println(t)
 
 }
