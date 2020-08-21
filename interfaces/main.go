@@ -6,6 +6,16 @@ type Greeter interface {
 	Greet()
 }
 
+type Byer interface {
+	Bye()
+}
+
+// Embebiendo 2 interfaces
+type GreeterByer interface {
+	Greeter
+	Byer
+}
+
 type Person struct {
 	Name string
 }
@@ -14,16 +24,39 @@ func (p Person) Greet() {
 	fmt.Printf("Hola soy %s\n", p.Name)
 }
 
+func (p Person) Bye() {
+	fmt.Printf("Adios soy %s\n", p.Name)
+}
+
 type Text string
 
 func (t Text) Greet() {
 	fmt.Printf("Hola soy %s\n", t)
 }
 
-func GreetAll(gs ...Greeter) {
-	for _, g := range gs {
-		g.Greet()
-		fmt.Printf("Valor:\t %v\nTipo:\t %T\n\n", g, g)
+func (t Text) Bye() {
+	fmt.Printf("Adios soy %s\n", t)
+}
+
+// Se eliminan estas dos implementaciones de Greet y Bye
+// func GreetAll(gs ...Greeter) {
+// 	for _, g := range gs {
+// 		g.Greet()
+// 		fmt.Printf("Valor:\t %v\nTipo:\t %T\n\n", g, g)
+// 	}
+// }
+
+// func ByeAll(bs ...Byer) {
+// 	for _, b := range bs {
+// 		b.Bye()
+// 		fmt.Printf("Valor:\t %v\nTipo:\t %T\n\n", b, b)
+// 	}
+// }
+
+func All(gbs ...GreeterByer) {
+	for _, gb := range gbs {
+		gb.Greet()
+		gb.Bye()
 	}
 }
 
@@ -51,6 +84,12 @@ func main() {
 	p := Person{Name: "Karime"}
 	var t Text = "Thor"
 
-	GreetAll(p, t, g, gr)
+	// GreetAll(p, t, g, gr)
+
+	fmt.Println("________________________________________________")
+
+	// ByeAll(p, t)
+
+	All(p, t)
 
 }
